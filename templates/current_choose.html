@@ -1,0 +1,115 @@
+{% extends 'base.html'%}
+
+{% block title %} Current choose {% endblock %}
+
+{% block content %}
+
+
+
+    {% if what == 'prod' %}  <!-- если продукт -->
+
+        {% if lang == 'ru' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Главная </a>
+            <p> {{ choosed_product.ProductName_ru }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_product.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_product.ProductDescription_ru }}</h2>
+        {% endif %}
+
+        {% if lang == 'ukr' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Головна </a>
+            <p> {{ choosed_product.ProductName_ukr }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_product.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_product.ProductDescription_ukr }}</h2>
+        {% endif %}
+
+        {% if lang == 'en' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Main </a>
+            <p> {{ choosed_product.ProductName_en }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_product.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_product.ProductDescription_en }}</h2>
+        {% endif %}
+
+        {% if lang == 'de' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Hauptseite </a>
+            <p> {{ choosed_product.ProductName_de }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_product.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_product.ProductDescription_de }}</h2>
+        {% endif %}
+    {% endif %}
+
+
+    {% if what == 'serv' %}  <!-- если продукт -->
+
+
+        {% if lang == 'ru' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Главная </a>
+            <p> {{ choosed_service.ServiceName_ru }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_service.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_service.ServiceDescription_ru }}</h2>
+        {% endif %}
+
+        {% if lang == 'ukr' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Головна </a>
+            <p> {{ choosed_service.ServiceName_ukr }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_service.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_service.ServiceDescription_ukr }}</h2>
+        {% endif %}
+
+        {% if lang == 'en' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Main </a>
+            <p> {{ choosed_service.ServiceName_en }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_service.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_service.ServiceDescription_en }}</h2>
+        {% endif %}
+
+        {% if lang == 'de' %}  <!-- если руский -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Hauptseite </a>
+            <p> {{ choosed_service.ServiceName_de }} </p>  <!-- выводит название продукта -->
+            {% for photo in choosed_service.addfiles_set.all %}  <!-- проходит по фоточкам -->
+                {% if photo %}  <!-- если есть фотки -->
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- выводит фотку -->
+                {% endif %}  <!-- конец фотки -->
+            {% endfor %}
+
+            <h2>{{ choosed_service.ServiceDescription_de }}</h2>
+        {% endif %}
+
+    {% endif %}
+
+
+{% endblock %}

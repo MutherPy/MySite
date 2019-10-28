@@ -1,0 +1,130 @@
+{% extends 'base.html'%}
+
+{% block title %} Sanich Technologies {% endblock %}
+
+{% block content %}
+
+    {% if what == 'prod' %} <!-- if Products -->
+
+        {% if lang == 'ru' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang %} "> Главная </a>
+            {% for prod in products %}
+                <h1><a href=" {% url 'products:current_product' lang=lang id=prod.id %} "> {{ prod.ProductName_ru }} </a></h1>
+                {% with prod.addfiles_set.all|first as photo %}
+                    {% if photo %}
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endwith %}
+                <h2>{{ prod.ProductDescription_ru }}</h2>
+            {% endfor %}
+
+        {% endif %}
+
+        {% if lang == 'ukr' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Головна </a>
+            {% for prod in products %}
+                <h1><a href=" {% url 'products:current_product' lang=lang id=prod.id %} "> {{ prod.ProductName_ukr }} </a></h1>
+                {% with prod.addfiles_set.all|first as photo %}
+                    {% if photo %}
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endwith %}
+                <h2>{{ prod.ProductDescription_ukr }}</h2>
+            {% endfor %}
+
+        {% endif %}
+
+        {% if lang == 'en' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Main </a>
+            {% for prod in products %}
+                <h1><a href=" {% url 'products:current_product' lang=lang id=prod.id %} "> {{ prod.ProductName_en }} </a></h1>
+                {% with prod.addfiles_set.all|first as photo %}
+                    {% if photo %}
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endwith %}
+                <h2>{{ prod.ProductDescription_en }}</h2>
+            {% endfor %}
+
+        {% endif %}
+
+        {% if lang == 'de' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:back_to_main' cur_lang=lang  %} "> Hauptseite </a>
+            {% for prod in products %}
+                <h1><a href=" {% url 'products:current_product' lang=lang id=prod.id %} "> {{ prod.ProductName_de }} </a></h1>
+                {% with prod.addfiles_set.all|first as photo %}
+                    {% if photo %}
+                    <img src="{{ photo.ProductPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endwith %}
+                <h2>{{ prod.ProductDescription_de }}</h2>
+            {% endfor %}
+
+        {% endif %}
+    {% endif %} <!-- end if Products -->
+
+
+    {% if what == 'serv' %} <!-- if Services -->
+
+        {% if lang == 'ru' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:change_lang' ch_lang=lang %} "> Главная </a>
+            {% for serv in services %}
+            <h1><a href=" {% url 'services:current_service' lang=lang id=serv.id %} "> {{ serv.ServiceName_ru }} </a> </h1>
+                {% for photo in serv.addfiles_set.all %}
+                    {% if photo %}
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endfor %}
+                <h2>{{ serv.ServiceDescription_ru }}</h2>
+            {% endfor %}
+        {% endif %}
+
+        {% if lang == 'ukr' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:change_lang' ch_lang=lang %} "> Головна </a>
+            {% for serv in services %}
+                <h1><a href=" {% url 'services:current_service' lang=lang id=serv.id %} "> {{ serv.ServiceName_ukr }} </a> </h1>
+                {% for photo in serv.addfiles_set.all %}
+                    {% if photo %}
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endfor %}
+                <h2>{{ serv.ServiceDescription_ukr }}</h2>
+            {% endfor %}
+        {% endif %}
+
+        {% if lang == 'en' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:change_lang' ch_lang=lang %} "> Main </a>
+            {% for serv in services %}
+                <h1><a href=" {% url 'services:current_service' lang=lang id=serv.id %} "> {{ serv.ServiceName_en }} </a> </h1>
+                {% for photo in serv.addfiles_set.all %}
+                    {% if photo %}
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endfor %}
+                <h2>{{ serv.ServiceDescription_en }}</h2>
+            {% endfor %}
+        {% endif %}
+
+        {% if lang == 'de' %}  <!-- Если укр -->
+        <a href=" {% url 'mainpage:change_lang' ch_lang=lang %} "> Hauptseite </a>
+            {% for serv in services %}
+                <h1><a href=" {% url 'services:current_service' lang=lang id=serv.id %} "> {{ serv.ServiceName_de }} </a> </h1>
+                {% for photo in serv.addfiles_set.all %}
+                    {% if photo %}
+                    <img src="{{ photo.ServicePhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                    <p></p>
+                    {% endif %}
+                {% endfor %}
+                <h2>{{ serv.ServiceDescription_de }}</h2>
+            {% endfor %}
+        {% endif %}
+    {% endif %} <!-- end if Services -->
+
+{% endblock %}

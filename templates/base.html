@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+   <link rel="stylesheet" href="{% static 'assets/css/main_file.css' %}" type="text/css" />
+
+    <title>{% block title %} S_T {% endblock %}</title>
+</head>
+<body>
+    {% block content %} {% endblock %}
+
+    <footer> Sanich number +380poshta666 </footer>
+</body>
+</html>

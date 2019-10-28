@@ -1,0 +1,81 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}  Sanich Technologies {% endblock %}
+
+{% block content %}
+
+
+    <a href=" {% url 'mainpage:change_lang' ch_lang='ru' %} " >
+        <div id="blue"> Russian </div></a>
+    <p></p>
+    <a href=" {% url 'mainpage:change_lang' ch_lang='ukr' %} "> Ukrainian </a>
+    <p></p>
+    <a href=" {% url 'mainpage:change_lang' ch_lang='en' %} "> English </a>
+    <p></p>
+    <a href=" {% url 'mainpage:change_lang' ch_lang='de' %} "> Deutsch </a>
+    <p></p>
+
+    {% if lang == 'ukr' %}
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='products' %} "> Товари </a>
+        <p></p>
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='services' %} "> Послуги </a>
+        <p></p>
+        {% for about in aboutus  %}
+            <h1>{{ about.AboutUs_ukr }}</h1>
+            <p></p>
+            {% for photo in about.mainphotos_set.all %}
+                <img src="{{ photo.MainPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                <p></p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {% if lang == 'ru' %}
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='products' %} "> Товары </a>
+        <p></p>
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='services' %} "> Услуги </a>
+        <p></p>
+
+        {% for about in aboutus  %}
+            <h1>{{ about.AboutUs_ru }}</h1>
+            <p></p>
+            {% for photo in about.mainphotos_set.all %}
+                <img src="{{ photo.MainPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                <p></p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {% if lang == 'en' %}
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='products' %} "> Products </a>
+        <p></p>
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='services' %} "> Services </a>
+        <p></p>
+
+        {% for about in aboutus  %}
+            <h1>{{ about.AboutUs_en }}</h1>
+            <p></p>
+            {% for photo in about.mainphotos_set.all %}
+                <img src="{{ photo.MainPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                <p></p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+    {% if lang == 'de' %}
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='products' %} "> Produkte </a>
+        <p></p>
+        <a href=" {% url 'mainpage:show_prod_or_serv' lang=lang ps='services' %} "> Dienstleistungen </a>
+        <p></p>
+
+        {% for about in aboutus  %}
+            <h1>{{ about.AboutUs_de }}</h1>
+            <p></p>
+            {% for photo in about.mainphotos_set.all %}
+                <img src="{{ photo.MainPhoto.url }}" alt='{{ photo }}'>  <!-- Выводит фотку -->
+                <p></p>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}
